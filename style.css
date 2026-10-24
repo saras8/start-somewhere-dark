@@ -1,0 +1,144 @@
+:root {
+  --paper: #efefef;
+  --ink: #2a2a2a;
+  --ink-soft: #6b6b6b;
+  --font: "Special Elite", "Courier New", Courier, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--paper) url("assets/cover.png") center / contain no-repeat fixed;
+  color: var(--ink);
+  font-family: var(--font);
+  letter-spacing: 0.08em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* player */
+.player {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.play {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: rgba(239, 239, 239, 0.85);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.play:hover,
+.play:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  outline: none;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.icon-pause { display: none; }
+.play.is-playing .icon-play { display: none; }
+.play.is-playing .icon-pause { display: block; }
+
+.play:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.status {
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-transform: lowercase;
+}
+
+/* purchase */
+.buy {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 240px;
+  padding: 18px 20px;
+  background: rgba(239, 239, 239, 0.88);
+  border: 1px solid var(--ink);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.buy h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.artist {
+  margin: 4px 0 12px;
+  font-size: 13px;
+}
+
+.meta {
+  margin: 0 0 16px;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.buy-button {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.buy-button:hover,
+.buy-button:focus-visible {
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+}
+
+/* phones: art sits in the middle, controls above and below */
+@media (max-width: 720px) {
+  .player {
+    top: 16px;
+    left: 16px;
+  }
+
+  .buy {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
